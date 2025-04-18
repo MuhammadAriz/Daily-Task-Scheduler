@@ -59,6 +59,7 @@ export function TaskInput({onTaskSubmit}: TaskInputProps) {
         variant: 'destructive',
       });
       return;
++   console.log('Tasks submitted:', tasks);
     }
     onTaskSubmit(tasks);
   };
