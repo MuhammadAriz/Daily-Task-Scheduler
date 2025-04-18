@@ -34,7 +34,12 @@ export function Dashboard() {
     setIsLoading(true);
     try {
       const availableTime = '480'; // Example: 8 hours in minutes
-      const suggestedSchedule = await suggestSchedule({tasks, availableTime});
+      // Convert duration to a number
+      const tasksWithNumberDuration = tasks.map(task => ({
+        ...task,
+        duration: Number(task.duration),
+      }));
+      const suggestedSchedule = await suggestSchedule({tasks: tasksWithNumberDuration, availableTime});
       setSchedule(suggestedSchedule.schedule);
       toast({
         title: 'Schedule Generated',
@@ -93,7 +98,8 @@ export function Dashboard() {
             <ScheduleDisplay schedule={schedule} isLoading={isLoading} />
           </main>
         </div>
-      </SidebarInset>
+       </SidebarInset>
     </SidebarProvider>
   );
 }
+
