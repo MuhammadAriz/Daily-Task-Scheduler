@@ -67,7 +67,7 @@ export function TaskInput({onTaskSubmit}: TaskInputProps) {
     <>
       <form onSubmit={handleSubmit} className="grid gap-4">
         <div>
-          <Label htmlFor="description">Description</Label>
+          <Label htmlFor="description">Descriptions</Label>
           <Input
             type="text"
             id="description"
