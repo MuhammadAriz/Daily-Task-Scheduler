@@ -59,8 +59,8 @@ export function TaskInput({onTaskSubmit}: TaskInputProps) {
         variant: 'destructive',
       });
       return;
-+   console.log('Tasks submitted:', tasks);
     }
+    console.log('Tasks submitted:', tasks);
     onTaskSubmit(tasks);
   };
 
@@ -116,6 +116,25 @@ export function TaskInput({onTaskSubmit}: TaskInputProps) {
         </div>
         <Button type="submit">Add Task</Button>
       </form>
+
+      {/* Display added tasks */}
+      <div className="mt-4">
+        {tasks.length > 0 ? (
+          <>
+            <h3 className="text-lg font-semibold">Added Tasks:</h3>
+            <ul>
+              {tasks.map((task, index) => (
+                <li key={index} className="mb-2">
+                  {task.description} (Priority: {task.priority}, Duration: {task.duration} minutes, Constraints: {task.constraints})
+                </li>
+              ))}
+            </ul>
+          </>
+        ) : (
+          <p>No tasks added yet.</p>
+        )}
+      </div>
+
       <Button className="mt-4" onClick={handleGenerateSchedule}>
         Generate Schedule
       </Button>
